@@ -1,0 +1,23 @@
+
+    <script src="js/ie10-viewport-bug-workaround.js"></script>    
+    <script src="js/ie-emulation-modes-warning.js"></script>
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../frameworks/bootstrap/js/bootstrap.min.js"></script>
+    
+    <!-- JS scripts -->
+    <script type="text/javascript">
+        document.getElementById("loginbutton").onclick = function () {
+            location.href = "login.jsp";
+        };
+        document.getElementById("signupbutton").onclick = function () {
+            location.href = "signup.jsp";
+        };
+        $('.carousel').carousel({
+          interval: 5000
+        });
+    </script>
+  </body>
+</html>

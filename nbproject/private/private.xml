@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/Users/sergiolazaromagdalena/NetBeansProjects/Pizzeria/web/pages/bottom.html</file>
+            <file>file:/Users/sergiolazaromagdalena/NetBeansProjects/Pizzeria/src/java/Web/Facade.java</file>
+            <file>file:/Users/sergiolazaromagdalena/NetBeansProjects/Pizzeria/src/java/Web/Pizza.java</file>
+            <file>file:/Users/sergiolazaromagdalena/NetBeansProjects/Pizzeria/src/java/Servlets/catalogue.java</file>
+            <file>file:/Users/sergiolazaromagdalena/NetBeansProjects/Pizzeria/web/pages/userOrders.jsp</file>
+            <file>file:/Users/sergiolazaromagdalena/NetBeansProjects/Pizzeria/src/java/Servlets/deleteCookie.java</file>
+            <file>file:/Users/sergiolazaromagdalena/NetBeansProjects/Pizzeria/src/java/Servlets/modifications.java</file>
+            <file>file:/Users/sergiolazaromagdalena/NetBeansProjects/Pizzeria/web/pages/orders.jsp</file>
+            <file>file:/Users/sergiolazaromagdalena/NetBeansProjects/Pizzeria/src/java/Web/Order.java</file>
+            <file>file:/Users/sergiolazaromagdalena/NetBeansProjects/Pizzeria/web/js/orderPizza.js</file>
+            <file>file:/Users/sergiolazaromagdalena/NetBeansProjects/Pizzeria/web/pages/signup.jsp</file>
+            <file>file:/Users/sergiolazaromagdalena/NetBeansProjects/Pizzeria/web/pages/top.jsp</file>
+            <file>file:/Users/sergiolazaromagdalena/NetBeansProjects/Pizzeria/src/java/Servlets/populateSelector.java</file>
+            <file>file:/Users/sergiolazaromagdalena/NetBeansProjects/Pizzeria/src/java/Servlets/orders.java</file>
+            <file>file:/Users/sergiolazaromagdalena/NetBeansProjects/Pizzeria/web/js/manageFields.js</file>
+            <file>file:/Users/sergiolazaromagdalena/NetBeansProjects/Pizzeria/src/java/Web/AdminOrders.java</file>
+            <file>file:/Users/sergiolazaromagdalena/NetBeansProjects/Pizzeria/web/pages/modifications.jsp</file>
+            <file>file:/Users/sergiolazaromagdalena/NetBeansProjects/Pizzeria/src/java/Servlets/signup.java</file>
+            <file>file:/Users/sergiolazaromagdalena/NetBeansProjects/Pizzeria/web/pages/catalogue.jsp</file>
+            <file>file:/Users/sergiolazaromagdalena/NetBeansProjects/Pizzeria/web/WEB-INF/web.xml</file>
+            <file>file:/Users/sergiolazaromagdalena/NetBeansProjects/Pizzeria/src/java/Servlets/userOrders.java</file>
+            <file>file:/Users/sergiolazaromagdalena/NetBeansProjects/Pizzeria/src/java/Servlets/startOrder.java</file>
+            <file>file:/Users/sergiolazaromagdalena/NetBeansProjects/Pizzeria/web/pages/orderPizza.jsp</file>
+            <file>file:/Users/sergiolazaromagdalena/NetBeansProjects/Pizzeria/web/css/mystyle.css</file>
+            <file>file:/Users/sergiolazaromagdalena/NetBeansProjects/Pizzeria/web/pages/index.jsp</file>
+            <file>file:/Users/sergiolazaromagdalena/NetBeansProjects/Pizzeria/src/java/Web/DBConnection.java</file>
+            <file>file:/Users/sergiolazaromagdalena/NetBeansProjects/Pizzeria/web/pages/login.jsp</file>
+            <file>file:/Users/sergiolazaromagdalena/NetBeansProjects/Pizzeria/src/java/Web/User.java</file>
+            <file>file:/Users/sergiolazaromagdalena/NetBeansProjects/Pizzeria/web/pages/about.jsp</file>
+            <file>file:/Users/sergiolazaromagdalena/NetBeansProjects/Pizzeria/src/java/Servlets/cancelOrder.java</file>
+            <file>file:/Users/sergiolazaromagdalena/NetBeansProjects/Pizzeria/src/java/Servlets/login.java</file>
+        </group>
+    </open-files>
+</project-private>
