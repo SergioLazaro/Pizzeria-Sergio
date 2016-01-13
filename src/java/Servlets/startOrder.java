@@ -55,7 +55,9 @@ public class startOrder extends HttpServlet {
         boolean finish = false;
         PrintWriter out = response.getWriter();
         ArrayList<Order> array = new ArrayList<Order>();
-        String username = getUsernameCookie(request.getCookies());  //Getting the username who is logged in
+        //Getting the username who is logged in
+        String username = getUsernameCookie(request.getCookies());  
+        //Getting every value inside a order (user could do several pizza orders)
         while(!finish){
             String pizzaID = request.getParameter("selector"+i);
             if(pizzaID != null){
@@ -69,8 +71,10 @@ public class startOrder extends HttpServlet {
                 finish = true;
             }
         }
+        //Now we have a ArrayList of Orders
         Facade facade = new Facade();
         try {
+            //Inserting the array elements in the same order
             int success = facade.addOrder(array);
             response.sendRedirect("pages/index.jsp?error=" + success);
         } catch (Exception ex) {
@@ -89,6 +93,11 @@ public class startOrder extends HttpServlet {
         return "Short description";
     }// </editor-fold>
     
+    /**
+     * Method used to get Username cookie inside Cookie[] cookies
+     * @param cookies should be different to null
+     * @return the username value in a String
+     */
     private String getUsernameCookie(Cookie[] cookies){
         Cookie username = null;
         // Get an array of Cookies associated with this domain

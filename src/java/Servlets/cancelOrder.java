@@ -48,8 +48,8 @@ public class cancelOrder extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String orderID = request.getParameter("orderid");
-        Cookie []cookies = request.getCookies();
-        String username = getUsernameCookie(cookies);
+        Cookie []cookies = request.getCookies();    //Getting Cookis array
+        String username = getUsernameCookie(cookies); //Getting username cookie
         try{
             Facade facade = new Facade();
             int val = facade.deleteOrder(orderID,username);

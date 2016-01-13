@@ -158,12 +158,11 @@ public class userOrders extends HttpServlet {
     }
     
     /**
-     * 
-     * @param error
-     * @param out must be distinct to null if error is not null
      * Method that check if we have error parameter initialized
      * If it is initialized, show an alert depending on error value
      * If it is not initialized, this method does nothing
+     * @param error
+     * @param out must be distinct to null if error is not null
      */
     private void checkError(String error, PrintWriter out){
         System.out.println("ERRORVALUE: " + error);

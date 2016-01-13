@@ -6,7 +6,8 @@
 package Web;
 
 /**
- *
+ * Class used to get info of orders only when 'admin' user
+ * asks for it.
  * @author sergiolazaromagdalena
  */
 public class AdminOrders {

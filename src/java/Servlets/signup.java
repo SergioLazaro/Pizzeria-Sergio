@@ -52,13 +52,19 @@ public class signup extends HttpServlet {
         String password = request.getParameter("password");
         String repassword = request.getParameter("repassword");
         int val = 2;
+        //Check if every field does not contain dangerous Strings
         if(checkSQLInjection(username) && checkSQLInjection(password) &&
                 checkSQLInjection(repassword)){
+            //If password equals retype password field...
             if(password.equalsIgnoreCase(repassword)){ 
                 try {
                     Facade facade = new Facade();
+                    //If everything is right, we create the new user
                     val = facade.addUser(username, password);
-                    if(val == 1){
+                    //If Facade.addUser(username,password) 
+                    //has returned a valid value...
+                    if(val == 1){ 
+                        //User cookies should be created
                         Cookie userCookie = new Cookie("username",username);
                         userCookie.setMaxAge(60*60*24*365);
                         Cookie roleCookie = new Cookie("role","user");
@@ -85,6 +91,11 @@ public class signup extends HttpServlet {
         return "Short description";
     }// </editor-fold>
     
+    /**
+     * Method used to check if user tries to modify the DB with SQLInjection
+     * @param data is the String inserted by the user
+     * @return true if and only if 'data' does not contain SQL sentences
+     */
     private boolean checkSQLInjection(String data){
         data = data.toLowerCase();
         boolean go = false;

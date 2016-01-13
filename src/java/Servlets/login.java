@@ -55,17 +55,21 @@ public class login extends HttpServlet {
         if(checkSQLInjection(username) && checkSQLInjection(password)){
             try {
                 Facade facade = new Facade();
+                //Check if there is a user with (username,password)
                 User user = facade.checkUser(username,password);
-                if(user != null){
+                if(user != null){   //We have a existing user...
+                    //Now, cookies should be created
                     Cookie userCookie = new Cookie("username",user.getUsername());
                     userCookie.setMaxAge(60*60*24*365);
                     Cookie roleCookie = new Cookie("role",user.getRole());
                     roleCookie.setMaxAge(60*60*24*365);
                     response.addCookie(userCookie);
                     response.addCookie(roleCookie);
+                    //Redirect to index.jsp without feedback
                     response.sendRedirect("pages/index.jsp");
                 }
                 else{
+                    //Redirect to index.jsp with some feedback
                     response.sendRedirect("pages/index.jsp?error=" + val);
                 }
             } catch (Exception ex) {

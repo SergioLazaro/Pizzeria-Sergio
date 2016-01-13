@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
+ * Class used to delete cookies when users logout
  * @author sergiolazaromagdalena
  */
 public class deleteCookie extends HttpServlet {
@@ -39,7 +39,7 @@ public class deleteCookie extends HttpServlet {
         if( cookies != null ){
             for (Cookie c : cookies) {
                 if ( c.getName().equals(delete) || c.getName().equals("role") ) {
-                    //Deleting username cookie and role
+                    //Deleting username cookie and role by setting it to null
                     Cookie cookie = new Cookie(c.getName(),null);
                     cookie.setMaxAge(0);
                     response.addCookie(cookie);

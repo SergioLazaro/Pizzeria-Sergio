@@ -41,7 +41,8 @@ public class populateSelector extends HttpServlet {
             throws ServletException, IOException {
         try {
                 Facade facade = new Facade();
-                List<Pizza> array = facade.getCatalogue();
+                List<Pizza> array = facade.getCatalogue();  //Getting pizzas
+                //Now, a JSON string is created and sent to the caller class
                 String json = new Gson().toJson(array);
                 response.setContentType("application/json");
                 response.setCharacterEncoding("UTF-8");

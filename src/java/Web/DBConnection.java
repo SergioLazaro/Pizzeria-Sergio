@@ -11,7 +11,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 /**
- *
+ * DB Connection Class
  * @author sergiolazaromagdalena
  */
 public class DBConnection {

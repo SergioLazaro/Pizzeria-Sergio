@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
+ * Class used by the 'admin' user to insert/modify/delete a pizza
  * @author sergiolazaromagdalena
  */
 public class modifications extends HttpServlet {
@@ -47,9 +47,9 @@ public class modifications extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String option = request.getParameter("optradio");
-        System.err.println("Option selected: " + option);
+        String option = request.getParameter("optradio");   //Getting selected option
         
+        //If admin want to modify/delete a pizza
         if(option.equals("modify") || option.equals("delete")){    // Modify or Delete option
             String pizzaID = request.getParameter("pizzaSelector");
             String price = request.getParameter("price");
@@ -97,7 +97,11 @@ public class modifications extends HttpServlet {
         }
         
     }
-    
+    /**
+     * Method used to check if user tries to modify the DB with SQLInjection
+     * @param data is the String inserted by the user
+     * @return true if and only if 'data' does not contain SQL sentences
+     */
     private boolean checkSQLInjection(String data){
         data = data.toLowerCase();
         boolean go = false;

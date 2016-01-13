@@ -15,6 +15,12 @@ public class Facade {
 	
 	public Facade(){}
 	
+        /**
+         * @return a List<String> which contains the name of every user 
+         * @throws Exception if there is a problem with the DB connection
+         * 'SQLException'
+         */
+        
         public List<String> getUsernames() throws Exception{
             Connection mysql = null;
             List<String> users = new ArrayList<String>();
@@ -40,6 +46,14 @@ public class Facade {
             }
         }
         
+        /**
+         * Method used to insert a new user(username,password,role) in the DB
+         * @param username should be a not empty String
+         * @param password should be a not empty String
+         * @return an integer value depending on the result of adding the new
+         * user. This value is used to show feedback to the user.
+         * @throws Exception if there is a problem with the DB connection 
+         */
         public int addUser(String username, String password) throws Exception{
             Connection mysql = null;
             int val = 2;
@@ -47,6 +61,7 @@ public class Facade {
                 DBConnection db = new DBConnection();
 		mysql = db.startConnection();
 		Statement st = mysql.createStatement(); 
+                //Check if there is a user with the same username
                 ResultSet res = st.executeQuery("SELECT COUNT(*) as count FROM user "
                         + "WHERE username = '" + username + "' AND"
                         + "password = '" + password +"'");
@@ -56,7 +71,7 @@ public class Facade {
                     found = res.getInt("count");
 		}
                 System.out.println("CREATE NEW USER: " + found);
-                if(found > 0){
+                if(found == 0){  //If there is not a user
                     System.out.println("CREATE NEW USER");
                     String query = "INSERT INTO user(username,password,role) "
                             + "VALUES('" + username + "','" +  password +
@@ -73,12 +88,19 @@ public class Facade {
             return val;
 	}
         
+        /**
+         * Check a user role
+         * @param username should be a not empty String
+         * @param password should be a not empty String
+         * @return the User with (username,password)
+         * @throws Exception (SQLException)
+         */
         public User checkUser(String username, String password) throws Exception{
             Connection mysql = null;
             try{
                 DBConnection db = new DBConnection();
 		mysql = db.startConnection();
-		Statement st = mysql.createStatement(); 
+		Statement st = mysql.createStatement();
                 ResultSet res = st.executeQuery("SELECT * FROM"
                         + " user WHERE username = '" + username + "'");
                 User newUser = null;
@@ -98,6 +120,11 @@ public class Facade {
             
 	}
         
+        /**
+         * Method which is used to get every pizza in the catalogue
+         * @return a List<Pizza> used to show in <select> tag
+         * @throws Exception (SQLException)
+         */
         public List<Pizza> getCatalogue() throws Exception{
             Connection mysql = null;
             try{
@@ -128,6 +155,12 @@ public class Facade {
             }
         }
         
+        /**
+         * Method used to get the ingredients of a pizza
+         * @param pizza should be the name of a pizza inserted in the DB
+         * @return a Pizza object
+         * @throws Exception (SQLException)
+         */
         public Pizza getIngredients(String pizza) throws Exception{
             Connection mysql = null;
             try{
@@ -144,6 +177,7 @@ public class Facade {
                      ingredients = res.getString("ingredients");
                      pizzaID = res.getInt("pizzaID");
                  }
+                //returning the Pizza object
                 return new Pizza(pizzaID,pizza,price,ingredients);
             }
             catch(Exception e){
@@ -156,6 +190,12 @@ public class Facade {
             }
         }
         
+        /**
+         * Method that inserts into the DB a new order done by users.
+         * @param array should be a non empty ArrayList of Orders.
+         * @return a integer used to show feedback to the users
+         * @throws Exception 
+         */
         public int addOrder(ArrayList<Order> array)throws Exception{
             Connection mysql = null;
             int inserted = 0;
@@ -197,7 +237,12 @@ public class Facade {
             }
         }
         
-        
+        /**
+         * Method that looks for in array for the Pizza object with the pizzaID
+         * @param pizzaId should be an integer distinct to 0
+         * @param array should be an ArrayList of Pizza objects and not empty
+         * @return the Pizza object with pizzaId if it is contained in 'array'
+         */
         private Pizza getPizzaById(int pizzaId, ArrayList<Pizza> array){
             Pizza pizza = null;
             for(Pizza p : array){
@@ -208,7 +253,13 @@ public class Facade {
             }
             return pizza;
         }
-    
+        
+        /**
+         * Method used to get every Pizza object inserted in the DB
+         * @param st should be a Statement object initialized
+         * @return an ArrayList of Pizza objects
+         * @throws Exception (SQLException)
+         */
         private ArrayList<Pizza> getPizzas(Statement st) throws Exception{
             ResultSet res = st.executeQuery("SELECT * FROM pizza");
             ArrayList<Pizza> pizzaArray = new ArrayList<Pizza>();
@@ -229,6 +280,14 @@ public class Facade {
             return pizzaArray;
         }
         
+        /**
+         * Method that look for a username last order in the DB.
+         * @param username should be a non empty String
+         * @param st should be a Statement object initiliazed
+         * @return an integer value equal to the last order ordered by the user
+         * with 'username' as username.
+         * @throws Exception (SQLException)
+         */
         private int getLastOrder(String username, Statement st) throws Exception{
             ResultSet res = st.executeQuery("SELECT max FROM lastOrderPerUser " +
                     "WHERE username = '" + username + "'");
@@ -239,6 +298,11 @@ public class Facade {
             return id;
         }
 	
+        /**
+         * Method used to show to the admin user every order inside the DB
+         * @return a List of AdminOrders
+         * @throws Exception (SQLException)
+         */
         public List<AdminOrders> getOrders() throws Exception{
             Connection mysql = null;
             try{
@@ -275,11 +339,19 @@ public class Facade {
                 }
             }
         }
+        
+        /**
+         * Method used to insert a new pizza in the DB
+         * @param name should be a non empty String
+         * @param price should be a non empty String
+         * @param ingredients should be a non empty String
+         * @return an integer value used to show feedback to the user.
+         * @throws Exception (SQLException)
+         */
         public int insertPizza(String name, String price, String ingredients) throws Exception{
             Connection mysql = null;
             int val = -1;
             try{
-                System.err.println("ASDFASDF");
                 DBConnection db = new DBConnection();
 		mysql = db.startConnection();
 		Statement st = mysql.createStatement();
@@ -299,11 +371,16 @@ public class Facade {
             }
         }
         
+        /**
+         * Method used to delete existing pizzas (Only admin user)
+         * @param pizzaID should be a not empty String
+         * @return an integer value used to show feedback to the user.
+         * @throws Exception (SQLException)
+         */
         public int deletePizza(String pizzaID) throws Exception{
             Connection mysql = null;
             int val = -1;
             try{
-                System.err.println("DELETE - " + pizzaID);
                 DBConnection db = new DBConnection();
 		mysql = db.startConnection();
 		Statement st = mysql.createStatement();
@@ -321,6 +398,14 @@ public class Facade {
             }
         }
         
+        /**
+         * Method used to change the values of an inserted pizza
+         * @param pizzaID should be a existing pizzaID in the DB.
+         * @param price should be a non empty String with the new price
+         * @param ingredients should be a non empty String
+         * @return an integer value used to show feedback to the user
+         * @throws Exception (SQLException)
+         */
         public int modifyPizza(String pizzaID, String price, String ingredients) throws Exception{
             Connection mysql = null;
             int val = -1;
@@ -344,6 +429,13 @@ public class Facade {
             }
         }
         
+        /**
+         * Method used to delete an existing order of a user
+         * @param orderID should be an existing orderID
+         * @param username should be an existing username in the DB
+         * @return an integer value used to show feedback to the user.
+         * @throws Exception (SQLException)
+         */
         public int deleteOrder(String orderID, String username) throws Exception{
             Connection mysql = null;
             int val = -1;

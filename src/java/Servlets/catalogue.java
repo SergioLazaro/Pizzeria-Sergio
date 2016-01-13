@@ -41,19 +41,21 @@ public class catalogue extends HttpServlet {
         List<Pizza> list;
         Facade facade = new Facade();
         try {
+            //Getting pizzas
             list = facade.getCatalogue();
             PrintWriter out = response.getWriter();
             out.println("<div class=\"pizza-block\">");
             int count = 0;
+            //Printing pizza info 
             for(Pizza p : list){
-                if(count % 2 == 0){
+                if(count % 2 == 0){ //Print background on grey
                     out.println("<div id=\"grey-background\">");
                     out.println("<p>Name: "+ p.getName() + "</p>");
                     out.println("<p>Price: "+ p.getPrice()+ " euro(s)</p>");
                     out.println("<p>Ingredients: "+ p.getIngredients() + "</p>");
                     out.println("</div>");
                 }
-                else{
+                else{   //Print without background
                     out.println("<div>");
                     out.println("<p>Name: "+ p.getName() + "</p>");
                     out.println("<p>Price: "+ p.getPrice()+ " euro(s)</p>");
